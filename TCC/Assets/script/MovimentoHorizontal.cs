@@ -19,13 +19,11 @@ public class MovimentoHorizontal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float movimentoHorizntal = Input.GetAxisRaw("Horizontal");
-        float movimentoVertical = Input.GetAxisRaw("Vertical");
+       
 
         Jump();
-
-        transform.Translate(new Vector3(1 * movimentoHorizntal, 1 * movimentoVertical, 0) * velocidade * Time.deltaTime);
-
+        movimento();
+        
     }
 
 
@@ -38,6 +36,15 @@ public class MovimentoHorizontal : MonoBehaviour
         {
             rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }
+    }
+
+    void movimento()
+    {
+        float movimentoHorizntal = Input.GetAxisRaw("Horizontal");
+        float movimentoVertical = Input.GetAxisRaw("Vertical");
+
+        transform.Translate(new Vector3(1 * movimentoHorizntal, 1 * movimentoVertical, 0) * velocidade * Time.deltaTime);
+
     }
 
     #endregion
