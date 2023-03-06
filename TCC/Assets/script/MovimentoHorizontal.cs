@@ -10,11 +10,14 @@ public class MovimentoHorizontal : MonoBehaviour
     public float JumpForce;
     public bool isJumping;
     private Rigidbody2D rig;
+    private Animator anim;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
