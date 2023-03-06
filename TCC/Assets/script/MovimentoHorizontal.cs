@@ -20,13 +20,11 @@ public class MovimentoHorizontal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float movimentoHorizntal = Input.GetAxisRaw("Horizontal");
-        float movimentoVertical = Input.GetAxisRaw("Vertical");
+       
 
         Jump();
-
-        transform.Translate(new Vector3(1 * movimentoHorizntal, 1 * movimentoVertical, 0) * velocidade * Time.deltaTime);
-
+        movimento();
+        
     }
 
 
@@ -41,6 +39,16 @@ public class MovimentoHorizontal : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
+    void movimento()
+    {
+        float movimentoHorizntal = Input.GetAxisRaw("Horizontal");
+        float movimentoVertical = Input.GetAxisRaw("Vertical");
+
+        transform.Translate(new Vector3(1 * movimentoHorizntal, 1 * movimentoVertical, 0) * velocidade * Time.deltaTime);
+
+    }
+=======
     void OnCollisionEnter2D(Collision2D collisior)
     {
         if (collisior.gameObject.tag == "Chão")
@@ -56,6 +64,7 @@ public class MovimentoHorizontal : MonoBehaviour
             isJumping = false;
         }
     }
+>>>>>>> b2afdbc053a776f87b12f2b6e7628d7360f9c3d6
 
     #endregion
 }
