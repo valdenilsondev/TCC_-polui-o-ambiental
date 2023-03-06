@@ -8,6 +8,7 @@ public class MovimentoHorizontal : MonoBehaviour
     
     public float velocidade;
     public float JumpForce;
+    public bool isJumping;
     private Rigidbody2D rig;
 
     // Start is called before the first frame update
@@ -32,12 +33,13 @@ public class MovimentoHorizontal : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isJumping)
         {
             rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }
     }
 
+<<<<<<< HEAD
     void movimento()
     {
         float movimentoHorizntal = Input.GetAxisRaw("Horizontal");
@@ -46,6 +48,23 @@ public class MovimentoHorizontal : MonoBehaviour
         transform.Translate(new Vector3(1 * movimentoHorizntal, 1 * movimentoVertical, 0) * velocidade * Time.deltaTime);
 
     }
+=======
+    void OnCollisionEnter2D(Collision2D collisior)
+    {
+        if (collisior.gameObject.tag == "Chão")
+        {
+            isJumping = true;
+        }
+
+    }
+    void OnCollisionExit2D(Collision2D collisior)
+    {
+        if (collisior.gameObject.tag == "Chão")
+        {
+            isJumping = false;
+        }
+    }
+>>>>>>> b2afdbc053a776f87b12f2b6e7628d7360f9c3d6
 
     #endregion
 }
