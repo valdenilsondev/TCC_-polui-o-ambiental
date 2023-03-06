@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Atirar : MonoBehaviour
 {
+
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,7 @@ public class Atirar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(new Vector2(1, 0) * speed * Time.deltaTime);
+
     }
 }
