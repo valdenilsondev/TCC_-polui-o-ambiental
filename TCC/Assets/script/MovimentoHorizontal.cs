@@ -43,6 +43,13 @@ public class MovimentoHorizontal : MonoBehaviour
     }
 
     void slide()
+    {
+  if(Input.GetButton("slide")){
+            {
+
+            }
+    }
+      
 
 
 
