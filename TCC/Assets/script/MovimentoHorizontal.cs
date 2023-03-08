@@ -10,14 +10,16 @@ public class MovimentoHorizontal : MonoBehaviour
     public float JumpForce;
     public bool isJumping;
     private Rigidbody2D rig;
-    private Animator anim;
 
+    public Animator anim;
+    float movimentoHorizntal;
+    float movimentoVertical;
 
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class MovimentoHorizontal : MonoBehaviour
 
         Jump();
         movimento();
-        
+       
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -35,8 +37,18 @@ public class MovimentoHorizontal : MonoBehaviour
         if(col.gameObject.tag == "inimigo")
         {
             // anim.SetTrigger();
-            Debug.Log("Morrer");
+            anim.SetTrigger("morrer");
+
+            movimentoHorizntal = 0;
+            movimentoVertical = 0;
+
+            velocidade = 0;
+
+            Destroy(gameObject, 2);
         }
+
+
+
     }
 
     //Minhas funções
@@ -50,11 +62,22 @@ public class MovimentoHorizontal : MonoBehaviour
         }
     }
 
+    void slide()
+    {
+
+    }
+
+
+
+
+
 
     void movimento()
     {
-        float movimentoHorizntal = Input.GetAxisRaw("Horizontal");
-        float movimentoVertical = Input.GetAxisRaw("Vertical");
+        movimentoHorizntal = Input.GetAxisRaw("Horizontal");
+        movimentoVertical = Input.GetAxisRaw("Vertical");
+
+       
 
         transform.Translate(new Vector3(1 * movimentoHorizntal, 1 * movimentoVertical, 0) * velocidade * Time.deltaTime);
 
@@ -66,6 +89,11 @@ public class MovimentoHorizontal : MonoBehaviour
         {
             isJumping = true;
         }
+        if (collisior.gameObject.tag == "inimigo")
+        {
+           
+        }
+
 
     }
     void OnCollisionExit2D(Collision2D collisior)
