@@ -42,7 +42,12 @@ public class MovimentoHorizontal : MonoBehaviour
         }
     }
 
-    
+    void slide()
+
+
+
+
+
 
     void movimento()
     {
