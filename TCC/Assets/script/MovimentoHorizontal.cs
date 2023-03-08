@@ -30,6 +30,14 @@ public class MovimentoHorizontal : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "inimigo")
+        {
+            // anim.SetTrigger();
+            Debug.Log("Morrer");
+        }
+    }
 
     //Minhas funções
     #region 
@@ -68,6 +76,8 @@ public class MovimentoHorizontal : MonoBehaviour
         }
     }
 
+
+   
 
     #endregion
 }
