@@ -10,6 +10,12 @@ public class MovimentoHorizontal : MonoBehaviour
     public float JumpForce;
     public bool isJumping;
     private Rigidbody2D rig;
+
+    public GameObject projetil;
+    public Transform posicaoProjetil;
+
+  
+
     private bool abaixar;
     public Animator anim;
    public float movimentoHorizntal;
@@ -17,12 +23,20 @@ public class MovimentoHorizontal : MonoBehaviour
 
     public SpriteRenderer spRender;
 
+    public GameObject bullet;
+    const float lifeTime = 2;
+    public float speed;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+
         spRender = GetComponentInChildren<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -34,8 +48,28 @@ public class MovimentoHorizontal : MonoBehaviour
         movimento();
         slide();
 
+        Shoot();
+
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "inimigo")
+        {
+            // anim.SetTrigger();
+            anim.SetTrigger("morrer");
+
+            movimentoHorizntal = 0;
+            movimentoVertical = 0;
+
+            velocidade = 0;
+
+            Destroy(gameObject, 2);
+        }
+
+
+
+    }
 
     //Minhas funções
 
@@ -49,6 +83,7 @@ public class MovimentoHorizontal : MonoBehaviour
             rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }
     }
+
 
     void slide()
     {
@@ -65,6 +100,16 @@ public class MovimentoHorizontal : MonoBehaviour
         }
     }
 
+    void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Instantiate(projetil, posicaoProjetil.position, Quaternion.identity);
+        }
+        
+
+
+    }
     void movimento()
     {
         movimentoHorizntal = Input.GetAxisRaw("Horizontal");
@@ -82,6 +127,11 @@ public class MovimentoHorizontal : MonoBehaviour
         {
             isJumping = true;
         }
+        if (collisior.gameObject.tag == "inimigo")
+        {
+           
+        }
+
 
     }
     void OnCollisionExit2D(Collision2D collisior)
@@ -92,6 +142,8 @@ public class MovimentoHorizontal : MonoBehaviour
         }
     }
 
+
+   
 
     #endregion
 }
