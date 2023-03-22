@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MovimentoHorizontal : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class MovimentoHorizontal : MonoBehaviour
     public Image vida5;
     public int qntVidaAtual;
     public int qntVida;
+    public int coins;
+    public TextMeshProUGUI textoMoedas;
 
     // Start is called before the first frame update
     void Start()
@@ -133,10 +136,26 @@ public class MovimentoHorizontal : MonoBehaviour
 
                 Destroy(gameObject, 2);
             }
-
+            if (col.gameObject.tag == "coins") ;
+            {
+                Destroy(col.gameObject);
+                coins++;
+            }
 
         }
 
+
+        if (col.gameObject.tag == "coins") ;
+        {
+            coins++;
+            
+            textoMoedas.text = coins.ToString();
+            Destroy(col.gameObject);
+
+            
+
+        }
+       
 
 
     }
@@ -201,6 +220,9 @@ public class MovimentoHorizontal : MonoBehaviour
         {
            
         }
+
+
+
 
 
     }
