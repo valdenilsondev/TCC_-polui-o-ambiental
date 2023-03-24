@@ -27,7 +27,9 @@ public class MovimentoHorizontal : MonoBehaviour
     const float lifeTime = 2;
     public float speed;
 
-
+    public const float runningSpeed = 9;
+    public const float defaultSpeed = 6;
+    public float Speed = defaultSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +49,7 @@ public class MovimentoHorizontal : MonoBehaviour
         Jump();
         movimento();
         slide();
-
+        run();
         Shoot();
 
     }
@@ -142,7 +144,19 @@ public class MovimentoHorizontal : MonoBehaviour
         }
     }
 
+    void run()
 
+    {
+        if (Input.GetKey(KeyCode.K)) 
+        { 
+            Speed = runningSpeed;
+        }
+        else if (Speed != defaultSpeed)
+        {
+             
+            Speed = defaultSpeed;
+        }
+    }
    
 
     #endregion
