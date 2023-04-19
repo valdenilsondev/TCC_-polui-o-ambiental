@@ -8,7 +8,7 @@ public class Inimigo1 : MonoBehaviour
     public Transform posicaoPlayer;
     public float velocidadeMovimento;
     public float distancia;
-    public GameObject projetil;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -20,19 +20,8 @@ public class Inimigo1 : MonoBehaviour
     {
         distancia = Vector3.Distance(transform.position, posicaoPlayer.transform.position);
 
-        if (distancia < 8)
-        {
-            Instantiate(projetil, transform.position, Quaternion.identity);
-        }
-
-
-        transform.position = Vector3.MoveTowards(transform.position, posicaoPlayer.position, velocidadeMovimento * Time.deltaTime);
-
-
-
-
-
-
+        
+        
 
 
 
