@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - coletavel
+  - coletavel2
+  - coletavel3
+  - transicao
   layers:
   - Default
   - TransparentFX

@@ -6,11 +6,16 @@ public class inimigo : MonoBehaviour
 {
     public float velocidade;
     public float fatorAndar;
+    private SpriteRenderer imagemInimigo;
+    public bool isSensor;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         fatorAndar = 1;
+        imagemInimigo = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -23,7 +28,12 @@ public class inimigo : MonoBehaviour
     {
         if (collision.gameObject.tag == "sensor")
         {
+            isSensor = !isSensor;
+            print("Cheguei ao limite");
             fatorAndar = fatorAndar * -1;
+            imagemInimigo.flipX = isSensor;
+
+
         }
     }
 }

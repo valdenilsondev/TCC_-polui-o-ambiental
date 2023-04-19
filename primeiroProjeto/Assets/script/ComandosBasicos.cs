@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
+
 
 public class ComandosBasicos : MonoBehaviour
 { private CharacterController controller;
@@ -11,6 +14,12 @@ public class ComandosBasicos : MonoBehaviour
     private Vector3 direcao;
     private bool isAnim;
     private float direcaoMovimento;
+    private int pontos;
+    public TextMeshProUGUI txtpontos;
+    public GameObject transicao;
+    public GameObject cameraPrimcipal;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,4 +57,53 @@ public class ComandosBasicos : MonoBehaviour
     {
         movimento = value.ReadValue < Vector2 > ();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "coletavel")
+
+        {
+
+            pontos += 1;
+            Destroy(other.gameObject);
+        }
+
+        txtpontos.text = pontos.ToString();
+
+        if (other.gameObject.tag == "coletavel2") 
+        {
+            pontos += 3;
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "coletavel3") 
+        {
+            pontos -= 1;
+            Destroy(other.gameObject);
+        }
+        txtpontos.text = pontos.ToString();
+
+
+        if (other.gameObject.tag == "transicao")
+        {
+            transicao.SetActive(true);
+            cameraPrimcipal.SetActive(false);
+        }
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
