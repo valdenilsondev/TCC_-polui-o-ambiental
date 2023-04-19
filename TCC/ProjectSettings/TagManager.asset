@@ -6,7 +6,11 @@ TagManager:
   tags:
   - "Ch\xE3o"
   - inimigo
+<<<<<<< HEAD
   - coins
+=======
+  - sensor
+>>>>>>> main
   layers:
   - Default
   - TransparentFX
