@@ -183,9 +183,9 @@ TextureImporter:
       name: perna E
       rect:
         serializedVersion: 2
-        x: 691
+        x: 678
         y: 23
-        width: 117
+        width: 128
         height: 258
       alignment: 9
       pivot: {x: 0.6357771, y: 0.8931228}
